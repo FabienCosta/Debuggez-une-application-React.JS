@@ -8,10 +8,12 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    new Date(evtA.date) < new Date(evtB.date) ? -1 : 0
   );
+
   const nextCard = () => {
     setTimeout(
+      // j/ai ajouter -1 a la longueur du tableau pour que l'index ne depasse pas la longueur du tableau
       () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
@@ -45,7 +47,8 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  // l'etat de checked n'est pas gerer par idx mais par index, les radio se mettent a jour maintenant
+                  checked={index === radioIdx}
                 />
               ))}
             </div>
