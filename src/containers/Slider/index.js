@@ -12,11 +12,13 @@ const Slider = () => {
   );
 
   const nextCard = () => {
-    setTimeout(
-      // j/ai ajouter -1 a la longueur du tableau pour que l'index ne depasse pas la longueur du tableau
-      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
-      5000
-    );
+    setTimeout(() => {
+      // if (byDateDesc) permet de vérifier si byDateDesc est défini avant de l'utiliser
+      if (byDateDesc) {
+        //  j"ai ajouter -1 a la condition pour que l'index ne dépasse pas la taille du tableau byDateDesc
+        setIndex(index < byDateDesc.length - 1 ? index + 1 : 0);
+      }
+    }, 5000);
   };
   useEffect(() => {
     nextCard();
@@ -24,9 +26,8 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={event.title}>
           <div
-            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -44,16 +45,17 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${event.id}`}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`${event.date}-${radioIdx}`} // j'ai mixer event.date et radioIdx pour avoir une clé unique
                   type="radio"
                   name="radio-button"
-                  // l'etat de checked n'est pas gerer par idx mais par index, les radio se mettent a jour maintenant
                   checked={index === radioIdx}
+                  readOnly
                 />
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
