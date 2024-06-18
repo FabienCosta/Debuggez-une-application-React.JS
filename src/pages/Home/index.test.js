@@ -24,21 +24,31 @@ describe("When Form is created", () => {
       await screen.findByText("Message envoyé !");
     });
   });
-
 });
 
-
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
-  })
+  it("a list of events is displayed", async () => {
+    render(<Home />);
+
+    // Trouver le slider par sa classe CSS
+    const slider = document.querySelector(".SlideCardList");
+
+    // Confirmer que le slider est dans le document
+    expect(slider).toBeInTheDocument();
+  });
   it("a list a people is displayed", () => {
-    // to implement
-  })
+    render(<Home />);
+    const people = document.querySelector(".ListContainer");
+    expect(people).toBeInTheDocument();
+  });
   it("a footer is displayed", () => {
-    // to implement
-  })
+    render(<Home />);
+    const footer = document.querySelector("footer");
+    expect(footer).toBeInTheDocument();
+  });
   it("an event card, with the last event, is displayed", () => {
-    // to implement
-  })
+    render(<Home />);
+    const eventCard = document.querySelector(".EventCard");
+    expect(eventCard).toBeInTheDocument();
+  });
 });

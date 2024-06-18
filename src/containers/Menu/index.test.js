@@ -23,4 +23,26 @@ describe("When Menu is created", () => {
       expect(window.document.location.hash).toEqual("#contact");
     });
   });
+
+  describe("When Menu is created", () => {
+    beforeEach(() => {
+      // Réinitialiser le hash avant chaque test
+      window.document.location.hash = "#nos-services";
+    });
+
+    // Vos tests ici
+    describe("and a click is triggered on Nos services link", () => {
+      it("document location href change", async () => {
+        render(<Menu />);
+        fireEvent(
+          await screen.findByText("Nos services"),
+          new MouseEvent("click", {
+            cancelable: true,
+            bubbles: true,
+          })
+        );
+        expect(window.document.location.hash).toEqual("#nos-services");
+      });
+    });
+  });
 });
