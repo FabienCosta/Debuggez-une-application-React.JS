@@ -12,16 +12,16 @@ const data = {
       cover: "/images/evangeline-shaw-nwLTVwb7DbU-unsplash1.png",
     },
     {
-      title: "World Gaming Day",
-      description: "Evenement mondial autour du gaming",
+      title: "Nordic design week",
+      description: "Conférences sur le design de demain dans le digital",
       date: "2022-03-29T20:28:45.744Z",
-      cover: "/images/evangeline-shaw-nwLTVwb7DbU-unsplash1.png",
+      cover: "/images/teemu-paananen-bzdhc5b3Bxs-unsplash1.png",
     },
     {
-      title: "World Farming Day",
-      description: "Evenement mondial autour de la ferme",
-      date: "2022-01-29T20:28:45.744Z",
-      cover: "/images/evangeline-shaw-nwLTVwb7DbU-unsplash1.png",
+      title: "Sneakercraze market",
+      description: "Rencontres de spécialistes des Sneakers Européens.",
+      date: "2022-05-29T20:28:45.744Z",
+      cover: "/images/jakob-dalbjorn-cuKJre3nyYc-unsplash 1.png",
     },
   ],
 };
@@ -36,9 +36,7 @@ describe("When slider is created", () => {
       </DataProvider>
     );
     await screen.findByText("World economic forum");
-    await screen.findByText("janvier");
-    await screen.findByText(
-      "Oeuvre à la coopération entre le secteur public et le privé."
-    );
+    await screen.findByText("Nordic design week");
+    await screen.findByText("mai");
   });
 });
